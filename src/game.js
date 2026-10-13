@@ -93,7 +93,7 @@ function reset(){
  board.replaceChildren(...deck.map((product,index)=>{
  const button=document.createElement('button');button.className='card';button.dataset.id=product.id;button.setAttribute('aria-label',`Card ${index+1}: flip card`);button.setAttribute('aria-pressed','false');
  const inner=document.createElement('span');inner.className='card-inner';inner.setAttribute('aria-hidden','true');
- const back=document.createElement('span');back.className='face back';back.innerHTML='<span class="card-flower">☾</span><span class="back-label">Beauty<br>Memory</span><span class="back-stars">✧ · ✦ · ✧</span>';
+ const back=document.createElement('span');back.className='face back';back.innerHTML='<span class="back-label">gamesCore<span>_</span></span>';
  const front=document.createElement('span');front.className='face front';const img=document.createElement('img');img.src=product.image;img.alt='';img.draggable=false;front.append(img);inner.append(back,front);button.append(inner);
  button.addEventListener('click',()=>flip(button,product,index));return button;
  }));

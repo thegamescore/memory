@@ -1,50 +1,50 @@
 [
   {
     "id": 0,
-    "name": "Enchanted rose serum",
-    "image": "assets/fairy-0.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Lipstick",
+    "image": "assets/card-lipstick.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 1,
-    "name": "Ruby lipstick",
-    "image": "assets/fairy-1.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Eau de parfum",
+    "image": "assets/card-perfume.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 2,
-    "name": "Butterfly perfume",
-    "image": "assets/fairy-2.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Nail polish",
+    "image": "assets/card-polish.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 3,
-    "name": "Golden peach lipsticks",
-    "image": "assets/fairy-3.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Face serum",
+    "image": "assets/card-serum.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 4,
-    "name": "Moonlight silver lipstick",
-    "image": "assets/fairy-4.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Face cream",
+    "image": "assets/card-cream.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 5,
-    "name": "Pearl-capped pink nail polish",
-    "image": "assets/fairy-5.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Mascara",
+    "image": "assets/card-mascara.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 6,
-    "name": "Pastel nail polish trio",
-    "image": "assets/fairy-6.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Powder compact",
+    "image": "assets/card-compact.svg",
+    "source": "Original flat SVG illustration"
   },
   {
     "id": 7,
-    "name": "Golden amber serum",
-    "image": "assets/fairy-7.jpg",
-    "source": "Original AI-generated fairy-tale illustration"
+    "name": "Blush brush",
+    "image": "assets/card-brush.svg",
+    "source": "Original flat SVG illustration"
   }
 ]
