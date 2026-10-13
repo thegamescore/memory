@@ -8,11 +8,6 @@ try {
  const saved=Number(localStorage.getItem(bestKey));
  if(Number.isSafeInteger(saved)&&saved>=8)bestMoves=saved;
 } catch { /* The game also works when browser storage is unavailable. */ }
-function showBest(){
- $('#personal-best').textContent=bestMoves===null
-  ? 'Earn 3 stars: match all 8 pairs in 12 moves or fewer.'
-  : `Your best: ${bestMoves} moves. ${bestMoves===8?'A perfect round! Can you do it again?':'Play and try to beat it!'}`;
-}
 function updateStars(){
  const stars=moves<=12?3:moves<=18?2:1;
  $('#star-goal').textContent=stars===3?'★★★ · goal: 12 moves or fewer':stars===2?'★★ · goal: 18 moves or fewer':'★ · finish to earn a star';
@@ -31,9 +26,7 @@ function reward(){
   try { localStorage.setItem(bestKey,String(bestMoves)); }
   catch { $('#record-message').textContent+=' Score available only for this session.'; }
  }
- showBest();
 }
-showBest();
 const format = seconds => `${Math.floor(seconds/60).toString().padStart(2,'0')}:${(seconds%60).toString().padStart(2,'0')}`;
 function tick(){ $('#time').textContent=format(start ? Math.floor((performance.now()-start)/1000):0); }
 function reset(){
