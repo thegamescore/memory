@@ -11,5 +11,5 @@ createServer(async (req,res) => {
     if (!file.startsWith(root.endsWith(sep) ? root : root + sep)) { res.writeHead(403).end(); return; }
     const body = await readFile(file);
     res.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream', 'Cache-Control':'no-store' }).end(body);
-  } catch { res.writeHead(404).end('Nie znaleziono strony'); }
+  } catch { res.writeHead(404).end('Page not found'); }
 }).listen(4196, '127.0.0.1', () => console.log('http://localhost:4196'));
