@@ -13,7 +13,7 @@ Responsywna gra memory po polsku: 16 kart, 8 par, licznik ruchów i czasu, ekran
 - `src/index.html` — interfejs i okna dialogowe.
 - `src/style.css` — responsywny wygląd i animacja kart.
 - `src/game.js` — tasowanie, pary, zegar i restart.
-- `src/assets` — lokalne stockowe zdjęcia Unsplash oraz krój oryginalnego logotypu gamesCore_. Źródła zdjęć zapisano w `products.json`.
+- `src/assets` — baśniowe ilustracje kosmetyków wygenerowane przez AI oraz krój oryginalnego logotypu gamesCore_. Aktywne grafiki zapisano w `products.json`, a prompty w `art-prompts.md`. Oryginalne zdjęcia stockowe zachowano jako nieużywane pliki źródłowe.
 - `scripts` — budowanie i lokalny serwer.
 - `dist` — generowany wynik do publikacji.
 

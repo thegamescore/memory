@@ -11,7 +11,7 @@
 </head>
 <body>
   <section id="start-screen" class="start-screen" aria-labelledby="start-title">
-    <header><a class="logo" href="https://thegamescore.com/" aria-label="gamesCore — home">gamesCore<span>_</span></a><span class="header-note">SMALL GAMES. BIG MOMENTS. BY gamesCore_</span></header>
+    <header><a class="logo" href="https://thegamescore.com/" aria-label="gamesCore — home">gamesCore<span>_</span></a><span class="header-note">SMALL GAMES. BIG MOMENTS. BY gamesCore_</span><button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button></header>
     <main class="intro">
       <div class="intro-copy">
       <span class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> BEAUTY MEMORY / A MOMENT FOR YOU</span>
@@ -22,18 +22,18 @@
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="hero-orbit"></div><span class="art-spark spark-one">✧</span><span class="art-spark spark-two">✳</span>
-        <div class="preview-card preview-back"><span class="card-flower">✳</span><span>BEAUTY<br>MEMORY</span><small>A MOMENT FOR YOU</small></div>
-        <div class="preview-card preview-photo photo-one"><img src="assets/stock-0.jpg" alt=""><span>01 / a little glow</span></div>
-        <div class="preview-card preview-photo photo-two"><img src="assets/stock-5.jpg" alt=""><span>02 / a pop of color</span></div>
+        <div class="preview-card preview-back"><span class="card-flower">☾</span><span>BEAUTY<br>MEMORY</span><small>A MOMENT FOR YOU</small></div>
+        <div class="preview-card preview-photo photo-one"><img src="assets/fairy-0.jpg" alt=""><span>01 / a little glow</span></div>
+        <div class="preview-card preview-photo photo-two"><img src="assets/fairy-5.jpg" alt=""></div>
         <div class="art-stamp">better<br><em>together.</em><span>♡</span></div>
         <span class="art-caption">YOUR MEMORY HAS GREAT TASTE.</span>
       </div>
       <div class="how-to"><span>Flip two cards at a time. Find all 8 matching pairs.</span></div>
     </main>
-    <footer><span>MADE FOR LITTLE MOMENTS OF JOY <span aria-hidden="true">✳</span></span><a href="https://unsplash.com/" target="_blank" rel="noopener">Photos: Unsplash ↗</a></footer>
+    <footer><span>ENCHANTED BEAUTY COLLECTION</span></footer>
   </section>
   <main id="game-screen" class="game-screen" aria-label="Memory game" hidden>
-    <div class="game-heading"><span class="eyebrow">BEAUTY MEMORY</span><span>Take a moment. Find a match.</span></div>
+    <div class="game-heading"><span class="eyebrow">BEAUTY MEMORY</span><button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button></div>
     <div class="toolbar">
       <button class="exit" id="exit" aria-label="Back to start screen" title="Back to start">←</button>
       <div class="stats"><div><span>TIME</span><strong id="time" role="timer" aria-label="Elapsed time">00:00</strong></div><div><span>MOVES</span><strong id="moves">0</strong></div></div>
@@ -49,6 +49,7 @@
     <p class="record-message" id="record-message"></p><p class="rating-rules">★★★ up to 12 moves · ★★ up to 18 · ★ for finishing</p>
     <button class="primary" id="again">Play again</button>
     <button class="secondary" id="home">Back to start</button>
+    <button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button>
   </dialog>
   <noscript>Enable JavaScript in your browser to play Memory.</noscript>
 </body>

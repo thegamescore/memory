@@ -4,6 +4,62 @@ const board = $('#board');
 let products=[], selected=[], moves=0, pairs=0, start=0, timer, pending, locked=false, playing=false;
 const bestKey='beauty-memory-best-moves-v1';
 let streak=0, bestMoves=null;
+
+// Audio is opt-in for each visit, and created only by the sound button.
+let soundEnabled=false, audioContext, soundBus;
+const soundButtons=[...document.querySelectorAll('.sound-toggle')];
+function updateSoundButtons(){
+ for(const button of soundButtons){
+  button.setAttribute('aria-pressed',String(soundEnabled));
+  button.querySelector('.sound-label').textContent=soundEnabled?'Sound on':'Sound off';
+ }
+}
+function silence(){
+ if(!audioContext||!soundBus)return;
+ soundBus.gain.cancelScheduledValues(audioContext.currentTime);
+ soundBus.gain.setTargetAtTime(0,audioContext.currentTime,.015);
+}
+function chime(kind){
+ if(!soundEnabled||document.hidden||audioContext?.state!=='running')return;
+ const melodies={flip:[523.25],match:[659.25,783.99,1046.5],finish:[523.25,659.25,783.99,1046.5],enable:[659.25,880]};
+ const now=audioContext.currentTime;
+ for(const [index,frequency] of melodies[kind].entries()){
+  const at=now+index*.14;
+  const note=audioContext.createOscillator();
+  const envelope=audioContext.createGain();
+  note.type='sine';note.frequency.value=frequency;
+  envelope.gain.setValueAtTime(0,at);
+  envelope.gain.linearRampToValueAtTime(kind==='flip'?.16:.22,at+.018);
+  envelope.gain.exponentialRampToValueAtTime(.001,at+.65);
+  note.connect(envelope);envelope.connect(soundBus);
+  note.start(at);note.stop(at+.7);
+  note.onended=()=>{note.disconnect();envelope.disconnect();};
+ }
+}
+for(const button of soundButtons)button.addEventListener('click',async()=>{
+ soundEnabled=!soundEnabled;updateSoundButtons();
+ if(!soundEnabled){silence();return;}
+ try{
+  if(!audioContext){
+   const AudioEngine=window.AudioContext||window.webkitAudioContext;
+   audioContext=new AudioEngine();soundBus=audioContext.createGain();
+   soundBus.gain.value=0;soundBus.connect(audioContext.destination);
+  }
+  await audioContext.resume();
+  if(!soundEnabled||document.hidden)return;
+  soundBus.gain.cancelScheduledValues(audioContext.currentTime);
+  soundBus.gain.setTargetAtTime(.22,audioContext.currentTime,.02);
+  chime('enable');
+ }catch{
+  soundEnabled=false;updateSoundButtons();
+  for(const control of soundButtons){control.disabled=true;control.querySelector('.sound-label').textContent='Sound unavailable';}
+ }
+});
+document.addEventListener('visibilitychange',()=>{
+ if(document.hidden)silence();
+ else if(soundEnabled&&soundBus)soundBus.gain.setTargetAtTime(.22,audioContext.currentTime,.02);
+});
+
 try {
  const saved=Number(localStorage.getItem(bestKey));
  if(Number.isSafeInteger(saved)&&saved>=8)bestMoves=saved;
@@ -37,20 +93,21 @@ function reset(){
  board.replaceChildren(...deck.map((product,index)=>{
  const button=document.createElement('button');button.className='card';button.dataset.id=product.id;button.setAttribute('aria-label',`Card ${index+1}: flip card`);button.setAttribute('aria-pressed','false');
  const inner=document.createElement('span');inner.className='card-inner';inner.setAttribute('aria-hidden','true');
- const back=document.createElement('span');back.className='face back';back.innerHTML='<span class="card-flower">✳</span><span class="back-label">BEAUTY<br>MEMORY</span>';
+ const back=document.createElement('span');back.className='face back';back.innerHTML='<span class="card-flower">☾</span><span class="back-label">Beauty<br>Memory</span><span class="back-stars">✧ · ✦ · ✧</span>';
  const front=document.createElement('span');front.className='face front';const img=document.createElement('img');img.src=product.image;img.alt='';img.draggable=false;front.append(img);inner.append(back,front);button.append(inner);
  button.addEventListener('click',()=>flip(button,product,index));return button;
  }));
 }
 function flip(button,product,index){
  if(!playing||locked||button.classList.contains('flipped')||button.classList.contains('matched'))return;
+ chime('flip');
  button.classList.add('flipped');button.setAttribute('aria-pressed','true');button.setAttribute('aria-label',`Card ${index+1}: ${product.name}`);selected.push(button);
  $('#hint').textContent='Flip another card';
  if(selected.length<2)return;
  moves++;$('#moves').textContent=moves;updateStars();
  const [a,b]=selected;
  if(a.dataset.id===b.dataset.id){
- pairs++;$('#pairs').textContent=pairs;$('#pair-progress').value=pairs;
+ pairs++;chime(pairs===8?'finish':'match');$('#pairs').textContent=pairs;$('#pair-progress').value=pairs;
  for(const card of selected){card.classList.add('matched');card.setAttribute('aria-disabled','true');card.setAttribute('aria-label',card.getAttribute('aria-label')+' — pair matched');}
  streak++;selected=[];$('#hint').textContent=streak>1?`${streak} pairs in a row! Great streak ✨`:'A match! Find another pair';
  if(pairs===8){reward();clearInterval(timer);tick();playing=false;locked=true;$('#hint').textContent='All pairs found!';$('#win-moves').textContent=moves;$('#win-time').textContent=$('#time').textContent;pending=setTimeout(()=>$('#win-dialog').showModal(),500);}
