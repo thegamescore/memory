@@ -1,9 +1,55 @@
 <!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fcfafb"><meta name="description" content="Chwila dla siebie i trening pamięci. Odkryj osiem kosmetycznych par w Beauty Memory."><title>Beauty Memory · gamesCore_</title><link rel="stylesheet" href="style.css"><script src="game.js" defer></script></head>
-<body><header><a class="logo" href="https://thegamescore.com/" aria-label="gamesCore — strona główna">gamesCore<span>_</span></a><span class="header-label">MAŁA PRZERWA. DOBRA GRA.</span><button class="help" id="help" aria-label="Jak grać?">?</button></header>
-<main><section class="intro"><div class="eyebrow"><span></span> BEAUTY BREAK</div><h1>Piękno tkwi<br>w <em>dobrych parach.</em></h1><p>Chwila dla siebie. Mały trening pamięci.<br>Odkrywaj kosmetyki i znajdź wszystkie pary.</p><div class="intro-rule"></div><div class="instructions"><span class="step">01</span><p>Odkryj dwie karty.</p><span class="step">02</span><p>Znajdź ten sam kosmetyk.</p><span class="step">03</span><p>Połącz wszystkie 8 par.</p></div><div class="edition">MEMORY <span> / </span> EDYCJA BEAUTY</div></section>
-<section class="game" aria-label="Gra memory"><div class="toolbar"><div class="stats"><div><span>RUCHY</span><strong id="moves">0</strong></div><div><span>CZAS</span><strong id="time">00:00</strong></div><div><span>PARY</span><strong><b id="pairs">0</b><small> / 8</small></strong></div></div><button class="restart" id="restart" aria-label="Rozpocznij nową grę" title="Nowa gra">↻</button></div><div class="board" id="board" role="group" aria-label="Plansza 4 na 4"></div><div class="board-bottom"><span class="status-dot"></span><span id="hint" role="status">Odkryj pierwszą kartę, aby zacząć</span><span class="board-size">4 × 4</span></div><div class="progress" aria-hidden="true"><div id="progress"></div></div></section></main>
-<footer><span>Trochę skupienia. Dużo przyjemności.</span><a href="https://unsplash.com/" target="_blank" rel="noopener">Zdjęcia: Unsplash ↗</a></footer>
-<dialog id="help-dialog" aria-labelledby="help-title"><button class="close" aria-label="Zamknij instrukcję">×</button><span class="eyebrow">ZASADY GRY</span><h2 id="help-title">Znajdź swoją parę.</h2><p>Odkrywaj po dwie karty. Identyczne zdjęcia pozostają odkryte, a różne odwrócą się po chwili. Znajdź wszystkie 8 par w jak najmniejszej liczbie ruchów.</p><p>Jeden ruch to odkrycie dwóch kart. Czas startuje po pierwszym odkryciu.</p><button class="primary close-help">Gramy!</button></dialog>
-<dialog id="win-dialog" aria-labelledby="win-title"><span class="win-icon" aria-hidden="true">✓</span><span class="eyebrow">8 PAR · JEDEN ŚWIETNY WYNIK</span><h2 id="win-title">Idealne dopasowanie!</h2><p>Wszystkie pary odnalezione.<br>To była piękna przerwa.</p><div class="result"><div><span>RUCHY</span><strong id="win-moves"></strong></div><div><span>CZAS</span><strong id="win-time"></strong></div></div><button class="primary" id="again">Zagraj ponownie <span>↗</span></button><button class="secondary" id="see-board">Zobacz planszę</button></dialog>
-<noscript>Włącz JavaScript w przeglądarce, aby zagrać w memory.</noscript></body></html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fcfafb">
+  <meta name="description" content="Znajdź osiem kosmetycznych par w jak najkrótszym czasie. Beauty Memory.">
+  <title>Beauty Memory · gamesCore_</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <section id="start-screen" class="start-screen" aria-labelledby="start-title">
+    <header><a class="logo" href="https://thegamescore.com/" aria-label="gamesCore — strona główna">gamesCore<span>_</span></a><span class="header-note">MAŁA PRZERWA. DOBRA ENERGIA.</span></header>
+    <main class="intro">
+      <div class="intro-copy">
+      <span class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> BEAUTY MEMORY / CHWILA DLA CIEBIE</span>
+      <h1 id="start-title">Piękno tkwi<br>w <em>dobrych parach.</em></h1>
+      <p>Twój mały rytuał dla głowy. Odkrywaj kosmetyczne<br class="desktop-break"> skarby, łącz je w pary i daj się wciągnąć.</p>
+      <button class="primary" id="start" disabled>Wczytywanie…</button>
+      <p class="load-status" id="load-status" role="status"></p>
+      <div class="intro-facts"><span><b>16</b> kart</span><span><b>8</b> pięknych par</span><span><b>∞</b> bez presji</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit"></div><span class="art-spark spark-one">✧</span><span class="art-spark spark-two">✳</span>
+        <div class="preview-card preview-back"><span class="card-flower">✳</span><span>BEAUTY<br>MEMORY</span><small>CHWILA DLA SIEBIE</small></div>
+        <div class="preview-card preview-photo photo-one"><img src="assets/stock-0.jpg" alt=""><span>01 / odrobina blasku</span></div>
+        <div class="preview-card preview-photo photo-two"><img src="assets/stock-5.jpg" alt=""><span>02 / dobry kolor</span></div>
+        <div class="art-stamp">dobrze być<br><em>w parze.</em><span>♡</span></div>
+        <span class="art-caption">TWOJA PAMIĘĆ MA DOBRY GUST.</span>
+      </div>
+      <div class="how-to"><span class="how-title">JAK GRAĆ?</span><span><b>01</b> Odkryj dwie karty</span><span><b>02</b> Znajdź ich parę</span><span><b>03</b> Zbierz wszystkie 8</span></div>
+    </main>
+    <footer><span>STWORZONE DLA MAŁYCH, DOBRYCH PRZERW <span aria-hidden="true">✳</span></span><a href="https://unsplash.com/" target="_blank" rel="noopener">Zdjęcia: Unsplash ↗</a></footer>
+  </section>
+  <main id="game-screen" class="game-screen" aria-label="Gra memory" hidden>
+    <div class="game-heading"><span class="eyebrow">BEAUTY MEMORY</span><span>Znajdź chwilę. Znajdź parę.</span></div>
+    <div class="toolbar">
+      <button class="exit" id="exit" aria-label="Wróć do ekranu startowego" title="Wróć do startu">←</button>
+      <div class="stats"><div><span>CZAS</span><strong id="time" role="timer" aria-label="Czas gry">00:00</strong></div><div><span>RUCHY</span><strong id="moves">0</strong></div></div>
+      <div class="pair-count"><span><strong id="pairs">0</strong> / 8 par</span><progress id="pair-progress" max="8" value="0" aria-label="Znalezione pary"></progress></div>
+    </div>
+    <div class="board-space"><div class="board" id="board" role="group" aria-label="Plansza 4 na 4"></div></div>
+    <span id="hint" class="game-hint" role="status"></span>
+  </main>
+  <dialog id="win-dialog" aria-labelledby="win-title">
+    <div class="win-flower" aria-hidden="true">✳</div><span class="eyebrow">8 PAR ODNALEZIONYCH</span>
+    <h2 id="win-title">Idealne dopasowanie!</h2><p class="win-copy">Piękny wynik. To był dobrze spędzony czas.</p>
+    <div class="result"><div><span>TWÓJ CZAS</span><strong id="win-time"></strong></div><div><span>RUCHY</span><strong id="win-moves"></strong></div></div>
+    <button class="primary" id="again">Zagraj ponownie</button>
+    <button class="secondary" id="home">Wróć do startu</button>
+  </dialog>
+  <noscript>Włącz JavaScript w przeglądarce, aby zagrać w memory.</noscript>
+</body>
+</html>
