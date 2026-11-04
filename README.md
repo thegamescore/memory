@@ -1,6 +1,6 @@
-# Beauty Memory
+# Cosibella · Beauty Memory
 
-A responsive memory matching game in English: 16 cards, 8 pairs, a move counter, a timer, and a victory screen. Built with vanilla HTML, CSS, and JavaScript, with no dependencies.
+A responsive memory matching game in Polish: 16 cards, 8 pairs, a move counter, a timer, and a victory screen. Built with vanilla HTML, CSS, and JavaScript, with no dependencies.
 
 ## Getting started
 
@@ -13,11 +13,11 @@ A responsive memory matching game in English: 16 cards, 8 pairs, a move counter,
 - `src/index.html` — interface and dialogs.
 - `src/style.css` — responsive styling and card animations.
 - `src/game.js` — shuffling, matching, timer, and restart logic.
-- `src/assets` — flat SVG illustrations of cosmetics (`card-*.svg`, without brand names or logos) and the typeface used for the original gamesCore_ wordmark. Active artwork is listed in `products.json`. Earlier AI-generated fairy-tale illustrations (`fairy-*.jpg`, with prompts in `art-prompts.md`) are unused. Original stock photos are retained as unused source assets.
+- `src/assets` — flat SVG illustrations of cosmetics (`card-*.svg`, without brand names or logos) and locally hosted Cosibella branding assets. Active artwork is listed in `products.json`. Earlier AI-generated fairy-tale illustrations (`fairy-*.jpg`, with prompts in `art-prompts.md`) are unused. Original stock photos are retained as unused source assets.
 - `scripts` — build script and local server.
 - `dist` — generated files ready for publishing.
 
-The color palette is inspired by ICI PARIS XL (black, white, magenta #d82b91, and light pink). The game does not use ICI PARIS XL logos, photos, or product names. The original gamesCore_ wordmark uses the Recoleta Alt Bold font from https://thegamescore.com/.
+Branding follows https://cosibella.pl/: the official Cosibella logo, locally hosted Montserrat (regular and bold, including Polish glyphs), charcoal, white, and soft peach accents. The logo and fonts were sourced from Cosibella’s public website. Cosmetic illustrations remain generic artwork, not product photographs or endorsements. The interface, game feedback, and accessible labels are in Polish.
 
 The start screen shows brief instructions and a “Start game” button. Clicking it opens the board across the window and starts the timer. There is no time limit. The timer stops when all eight pairs are found. One move means flipping two cards. Cards that do not match flip back after 1.1 seconds. Returning to the start screen stops the game and cancels pending card flips. A new game shuffles the cards and resets the score.
 

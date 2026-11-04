@@ -1,49 +1,49 @@
 [
   {
     "id": 0,
-    "name": "Lipstick",
+    "name": "Pomadka",
     "image": "assets/card-lipstick.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 1,
-    "name": "Eau de parfum",
+    "name": "Woda perfumowana",
     "image": "assets/card-perfume.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 2,
-    "name": "Nail polish",
+    "name": "Lakier do paznokci",
     "image": "assets/card-polish.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 3,
-    "name": "Face serum",
+    "name": "Serum do twarzy",
     "image": "assets/card-serum.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 4,
-    "name": "Face cream",
+    "name": "Krem do twarzy",
     "image": "assets/card-cream.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 5,
-    "name": "Mascara",
+    "name": "Tusz do rzęs",
     "image": "assets/card-mascara.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 6,
-    "name": "Powder compact",
+    "name": "Puder",
     "image": "assets/card-compact.svg",
     "source": "Original flat SVG illustration"
   },
   {
     "id": 7,
-    "name": "Blush brush",
+    "name": "Pędzel do różu",
     "image": "assets/card-brush.svg",
     "source": "Original flat SVG illustration"
   }

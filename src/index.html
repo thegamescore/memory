@@ -1,56 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="Find eight beauty pairs as quickly as you can. Beauty Memory.">
-  <title>Beauty Memory · gamesCore_</title>
+  <meta name="description" content="Chwila dla Ciebie z Cosibella. Odkryj kosmetyczne pary i zagraj w beauty memory.">
+  <title>Cosibella · Beauty Memory</title>
   <link rel="stylesheet" href="style.css">
   <script src="game.js" defer></script>
 </head>
 <body>
   <section id="start-screen" class="start-screen" aria-labelledby="start-title">
-    <header><a class="logo" href="https://thegamescore.com/" aria-label="gamesCore — home">gamesCore<span>_</span></a><span class="header-note">SMALL GAMES. BIG MOMENTS. BY gamesCore_</span><button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button></header>
+    <header><a class="logo" href="https://cosibella.pl/" aria-label="Cosibella — przejdź do sklepu"><img src="assets/cosibella-logo.webp" alt="Cosibella" width="226" height="40"></a><span class="header-note">TWOJA CHWILA Z COSIBELLA</span><button class="sound-toggle" type="button" aria-label="Dźwięki gry" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Dźwięk wył.</span></button></header>
     <main class="intro">
       <div class="intro-copy">
-      <span class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> BEAUTY MEMORY / A MOMENT FOR YOU</span>
-      <h1 id="start-title">Beauty comes<br>in <em>perfect pairs.</em></h1>
-      <p>A little ritual for your mind. Discover beauty<br class="desktop-break"> essentials, match the pairs, and find your flow.</p>
-      <button class="primary" id="start" disabled>Loading…</button>
+      <span class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> BEAUTY MEMORY / CHWILA DLA CIEBIE</span>
+      <h1 id="start-title">Piękno chodzi<br><em>parami.</em></h1>
+      <p>Mały rytuał dla Twojej pamięci. Odkrywaj kosmetyki,<br class="desktop-break"> łącz je w pary i ciesz się chwilą dla siebie.</p>
+      <button class="primary" id="start" disabled>Ładowanie…</button>
       <p class="load-status" id="load-status" role="status"></p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="hero-orbit"></div><span class="art-spark spark-one">✧</span><span class="art-spark spark-two">✳</span>
-        <div class="preview-card preview-back"><span class="back-label">gamesCore<span>_</span></span></div>
+        <div class="preview-card preview-back"><span class="back-label"><img src="assets/cosibella-logo.webp" alt=""></span></div>
         <div class="preview-card preview-photo photo-one"><img src="assets/card-serum.svg" alt=""></div>
         <div class="preview-card preview-photo photo-two"><img src="assets/card-polish.svg" alt=""></div>
-        <div class="art-stamp">better<br><em>together.</em><span>♡</span></div>
-        <span class="art-caption">YOUR MEMORY HAS GREAT TASTE.</span>
+        <div class="art-stamp">dobrze<br><em>razem.</em><span>♡</span></div>
+        <span class="art-caption">ODKRYJ SWOJĄ DOBRĄ PARĘ.</span>
       </div>
-      <div class="how-to"><span>Flip two cards at a time. Find all 8 matching pairs.</span></div>
+      <div class="how-to"><span>Odkrywaj po dwie karty. Znajdź wszystkie 8 par.</span></div>
     </main>
-    <footer><span>BEAUTY ESSENTIALS COLLECTION</span></footer>
+    <footer><span>COSIBELLA · BEAUTY MEMORY</span><a href="https://cosibella.pl/">Odkryj świat pielęgnacji ↗</a></footer>
   </section>
-  <main id="game-screen" class="game-screen" aria-label="Memory game" hidden>
-    <div class="game-heading"><span class="eyebrow">BEAUTY MEMORY</span><button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button></div>
+  <main id="game-screen" class="game-screen" aria-label="Gra memory" hidden>
+    <div class="game-heading"><a class="game-brand" href="https://cosibella.pl/" aria-label="Cosibella — przejdź do sklepu"><img src="assets/cosibella-logo.webp" alt="Cosibella" width="170" height="30"></a><span class="eyebrow">BEAUTY MEMORY</span><button class="sound-toggle" type="button" aria-label="Dźwięki gry" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Dźwięk wył.</span></button></div>
     <div class="toolbar">
-      <button class="exit" id="exit" aria-label="Back to start screen" title="Back to start">←</button>
-      <div class="stats"><div><span>TIME</span><strong id="time" role="timer" aria-label="Elapsed time">00:00</strong></div><div><span>MOVES</span><strong id="moves">0</strong></div></div>
-      <div class="pair-count"><span><strong id="pairs">0</strong> / 8 pairs</span><progress id="pair-progress" max="8" value="0" aria-label="Matched pairs"></progress></div>
+      <button class="exit" id="exit" aria-label="Powrót do ekranu startowego" title="Wróć na start">←</button>
+      <div class="stats"><div><span>CZAS</span><strong id="time" role="timer" aria-label="Czas gry">00:00</strong></div><div><span>RUCHY</span><strong id="moves">0</strong></div></div>
+      <div class="pair-count"><span><strong id="pairs">0</strong> / 8 par</span><progress id="pair-progress" max="8" value="0" aria-label="Znalezione pary"></progress></div>
     </div>
-    <div class="board-space"><div class="board" id="board" role="group" aria-label="4 by 4 game board"></div></div>
-    <div class="game-feedback"><span class="star-goal" id="star-goal">★★★ · goal: 12 moves or fewer</span><span id="hint" class="game-hint" role="status"></span></div>
+    <div class="board-space"><div class="board" id="board" role="group" aria-label="Plansza: 4 na 4 karty"></div></div>
+    <div class="game-feedback"><span class="star-goal" id="star-goal">★★★ · cel: maksymalnie 12 ruchów</span><span id="hint" class="game-hint" role="status"></span></div>
   </main>
   <dialog id="win-dialog" aria-labelledby="win-title">
-    <div class="win-stars" id="win-stars" aria-label="3 out of 3 stars">★★★</div><span class="eyebrow">ALL 8 PAIRS FOUND</span>
-    <h2 id="win-title">A perfect match!</h2><p class="win-copy">Beautifully done. That was time well spent.</p>
-    <div class="result"><div><span>YOUR TIME</span><strong id="win-time"></strong></div><div><span>MOVES</span><strong id="win-moves"></strong></div></div>
-    <p class="record-message" id="record-message"></p><p class="rating-rules">★★★ up to 12 moves · ★★ up to 18 · ★ for finishing</p>
-    <button class="primary" id="again">Play again</button>
-    <button class="secondary" id="home">Back to start</button>
-    <button class="sound-toggle" type="button" aria-label="Game sounds" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Sound off</span></button>
+    <div class="win-stars" id="win-stars" aria-label="Liczba gwiazdek: 3 z 3">★★★</div><span class="eyebrow">WSZYSTKIE 8 PAR ODNALEZIONE</span>
+    <h2 id="win-title">Pięknie dobrane!</h2><p class="win-copy">Osiem par i chwila przyjemności. Brawo, Ty!</p>
+    <div class="result"><div><span>TWÓJ CZAS</span><strong id="win-time"></strong></div><div><span>RUCHY</span><strong id="win-moves"></strong></div></div>
+    <p class="record-message" id="record-message"></p><p class="rating-rules">★★★ do 12 ruchów · ★★ do 18 · ★ za ukończenie</p>
+    <button class="primary" id="again">Zagraj ponownie</button>
+    <a class="shop-link" href="https://cosibella.pl/">Odkryj kosmetyki w Cosibella ↗</a>
+    <button class="secondary" id="home">Wróć na start</button>
+    <button class="sound-toggle" type="button" aria-label="Dźwięki gry" aria-pressed="false"><span aria-hidden="true">♫</span> <span class="sound-label">Dźwięk wył.</span></button>
   </dialog>
-  <noscript>Enable JavaScript in your browser to play Memory.</noscript>
+  <noscript>Włącz JavaScript w przeglądarce, aby zagrać w memory.</noscript>
 </body>
 </html>
